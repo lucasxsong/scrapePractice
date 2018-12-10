@@ -1,8 +1,9 @@
 # import libraries
 import urllib2
+
 from bs4 import BeautifulSoup
 
-quote_page = 'https://www.bloomberg.com/quote/SPX:IND%27'
+quote_page = 'http://books.toscrape.com/'
 
 # query the website and return the html to the variable "page"
 page = urllib2.urlopen(quote_page)
@@ -11,13 +12,12 @@ page = urllib2.urlopen(quote_page)
 soup = BeautifulSoup(page, 'html.parser')
 
 # take out the <div> and get its value
-name_box = soup.find('h1, attrs={'class': 'name'})
+name_box = soup.find('div', attrs={'class': 'product_price'})
 
 # strip() is used to remove starting and trailing
-name = name_box.text.strip() 
-print name
+print(name_box.get_text(strip=True))
 
 # get the index price
-price_box = soup.find('div',attrs = {'class': 'price'})
+price_box = soup.find('div',attrs = {'class': 'price_color'})
 price = price_box.text
 print price
