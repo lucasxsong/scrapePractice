@@ -1,4 +1,5 @@
 # import libraries
+#https://www.crummy.com/software/BeautifulSoup/bs4/doc/#kinds-of-filters
 import urllib2
 
 from bs4 import BeautifulSoup
